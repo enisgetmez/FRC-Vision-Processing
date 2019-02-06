@@ -20,8 +20,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class Robot extends IterativeRobot {
-	private DifferentialDrive m_robotDrive
-			= new DifferentialDrive(new Spark(0), new Spark(1));
+	private Spark sagmotor1 = new Spark(0);
+	private Spark sagmotor2 = new Spark(1);
+	private Spark solmotor1 = new Spark(2);
+	private Spark solmotor2 = new Spark(3);
 	private Joystick m_stick = new Joystick(0);
 	private Timer m_timer = new Timer();
 	
@@ -51,12 +53,17 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousPeriodic() {
-		// Drive for 2 seconds
-		if (m_timer.get() < 2.0) {
-			m_robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
-		} else {
-			m_robotDrive.stopMotor(); // stop robot
+		if(konumX() < 285) // degerler 285'ten kucukse saga don
+		{
+			sagmotor1.set(1) // sag motorları calistir
+			sagmotor2.set(1)
 		}
+	        else if (konumX() > 295) // degerler 295'ten buyukse sola don
+		{
+			solmotor1.set(1) //sol motorlari calistir
+			solmotor2.set(1)
+		}
+
 	}
 
 	@Override
