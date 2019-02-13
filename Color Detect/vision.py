@@ -11,9 +11,7 @@ x = 0 #programın ileride hata vermemesi için x 0 olarak tanımlıyorum
 y = 0 # programın ileride hata vermemesi için y 0 olarak tanımlıyorum
 NetworkTables.initialize(server='roborio-6025-frc.local') # Roborio ile iletişim kuruyoruz
 table = NetworkTables.getTable("Vision") # table oluşturuyoruz
-cap = cv2.VideoCapture(0) # webcamin bagli oldugu port varsayilan 0
 
-ret, frame = cap.read() # kameradan gelen görüntülerin alınması
 
 #sari rengin algilanmasi
 colorLower = (24, 100, 100)
